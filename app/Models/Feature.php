@@ -2,22 +2,27 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Features extends Model
+class Feature extends Model
 {
+    use HasFactory;
+
     public function comments(): HasMany
     {
         return $this->hasMany(Comment::class, 'foreign_key', 'local_key');
     }
 
-    
-    public function upvotes() {
+
+    public function upvotes()
+    {
         return $this->hasMany(Upvote::class);
     }
 
-    public function user() {
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
 }
